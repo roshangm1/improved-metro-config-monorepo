@@ -1,0 +1,16 @@
+{
+  "name": "react-native-monorepo",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": []
+  },
+  "dependencies": {
+    "react-native": "*"
+  },
+  "resolutions": {
+    "react-native": "0.64.2"
+  }
+}
