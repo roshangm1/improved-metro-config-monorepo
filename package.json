@@ -7,6 +7,9 @@
     ],
     "nohoist": []
   },
+  "scripts": {
+    "postinstall": "npx patch-package"
+  },
   "dependencies": {
     "react-native": "*"
   },

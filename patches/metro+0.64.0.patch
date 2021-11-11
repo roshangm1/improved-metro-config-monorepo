@@ -1,0 +1,45 @@
+diff --git a/node_modules/metro/src/lib/TerminalReporter.js b/node_modules/metro/src/lib/TerminalReporter.js
+index 172eec4..8fde92a 100644
+--- a/node_modules/metro/src/lib/TerminalReporter.js
++++ b/node_modules/metro/src/lib/TerminalReporter.js
+@@ -187,6 +187,7 @@ class TerminalReporter {
+    */
+   constructor(terminal) {
+     this._activeBundles = new Map();
++    this.bundleStartTime =0;
+     this._scheduleUpdateBundleProgress = throttle(data => {
+       this.update(
+         _objectSpread(
+@@ -271,7 +272,6 @@ class TerminalReporter {
+ 
+   _logBundleBuildDone(buildID) {
+     const progress = this._activeBundles.get(buildID);
+-
+     if (progress != null) {
+       const msg = this._getBundleStatusMessage(
+         _objectSpread(
+@@ -286,7 +286,8 @@ class TerminalReporter {
+       );
+ 
+       this.terminal.log(msg);
+-
++      const duration = new Date().getTime()- this.bundleStartTime.getTime();
++      this.terminal.log(`Bundle build took ${duration}ms`);
+       this._activeBundles.delete(buildID);
+     }
+   }
+@@ -525,11 +526,13 @@ class TerminalReporter {
+     switch (event.type) {
+       case "bundle_build_done":
+       case "bundle_build_failed":
+-        this._activeBundles.delete(event.buildID);
+    
++        this._activeBundles.delete(event.buildID);
++      this._activeBundles
+         break;
+ 
+       case "bundle_build_started":
++        this.bundleStartTime = new Date()
+         const bundleProgress = {
+           bundleDetails: event.bundleDetails,
+           transformedFileCount: 0,
