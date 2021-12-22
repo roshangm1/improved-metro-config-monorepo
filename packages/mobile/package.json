@@ -5,15 +5,17 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start --reset-cache",
+    "start": "react-native webpack-start",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "@callstack/repack": "2.5.1",
     "@expo/metro-config": "^0.2.8",
     "@expo/react-native-action-sheet": "3.8.0",
     "@react-native-community/hooks": "2.6.0",
     "@react-native-community/masked-view": "0.1.10",
+
     "@react-navigation/bottom-tabs": "5.11.8",
     "@react-navigation/core": "5.15.2",
     "@react-navigation/native": "5.9.3",
@@ -22,6 +24,7 @@
     "addon-redux": "1.1.0",
     "axios": "0.21.1",
     "axios-retry": "3.1.9",
+    "babel-loader": "8.2.2",
     "babel-polyfill": "6.26.0",
     "base-64": "0.1.0",
     "date-fns": "1.30.1",
@@ -58,8 +61,10 @@
     "reselect": "4.0.0",
     "rn-fetch-blob": "git+https://github.com/joltup/rn-fetch-blob.git#dcbde6f7e12b666b9fe1c8c4a8e2cb04e0048326",
     "rxjs": "6.6.2",
+    "terser-webpack-plugin": "5.1.4",
     "use-debounce": "5.2.1",
     "uuid": "8.3.2",
+    "webpack": "5.48.0",
     "ws": "7.3.1",
     "xmldom": "0.3.0"
   },
